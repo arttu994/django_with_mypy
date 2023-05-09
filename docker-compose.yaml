@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=pg
+      - POSTGRES_PASSWORD=pg
+      - POSTGRES_DB=pg
+  red:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+  mailcatcher:
+    restart: on-failure
+    image: dockage/mailcatcher:0.8.2
+    ports:
+      - "1080:1080"
+      - "1025:1025"

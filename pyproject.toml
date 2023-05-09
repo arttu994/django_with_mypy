@@ -1,0 +1,34 @@
+[tool.mypy]
+plugins = ["mypy_django_plugin.main"]
+
+[tool.django-stubs]
+django_settings_module = "django_with_mypy.settings.settings"
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "django_with_mypy.settings.settings"
+python_files = ["test_*.py", "*_test.py", "tests.py", "tests/test_*.py"]
+addopts = "--strict-markers"
+markers = [
+    "group1: something about group1"
+]
+
+[tool.coverage.run]
+source = ["."]
+omit = [
+    "*venv*",
+    "*tests.py",
+    "*/migrations/*",
+    "*/tests/*",
+    "*urls.py",
+    "*__init__.py",
+]
+
+[tool.coverage.report]
+omit = [
+    "*venv*",
+    "*tests.py",
+    "*/migrations/*",
+    "*/tests/*",
+    "*/urls.py",
+    "*__init__.py",
+]
